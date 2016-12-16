@@ -1,12 +1,12 @@
 # Template information section
-name: "amo_viper_module"
-summary: "VIPER module template for amoCRM"
-author: "Andrey Zhukov"
-version: "1.0"
-license: "MIT"
+name: amo_viper_module
+summary: VIPER module template
+author: Andrey Zhukov
+version: 1.0.0
+license: MIT
 
 # The declarations for code files
-
+code_files:
 # Interactor layer
 - {name: Application\ Logic/Interactor/InteractorInput.h, path: Code/Application\ Logic/interactor_input.h.liquid}
 - {name: Application\ Logic/Interactor/InteractorOutput.h, path: Code/Application\ Logic/interactor_output.h.liquid}
