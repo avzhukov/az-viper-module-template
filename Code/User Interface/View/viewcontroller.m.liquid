@@ -1,0 +1,42 @@
+{% include 'header' %}
+
+#import "{{ prefix }}{{ module_info.name }}ViewController.h"
+
+#import <KeepLayout.h>
+
+@implementation {{ prefix }}{{ module_info.name }}ViewController
+
+#pragma mark - Lifecycle
+- (void)viewDidLoad {
+	[super viewDidLoad];
+
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    [super didMoveToParentViewController:parent];
+
+    [self addConstraintsToParentMargins];
+}
+
+#pragma mark - {{ prefix }}{{ module_info.name }}ViewInterface
+
+
+#pragma mark - Private
+- (void)addConstraintsToParentMargins {
+
+		if (!self.view.superview) {
+				return;
+		}
+
+    KeepAttribute * insets = [KeepAttribute group:
+                              self.view.keepTopInset,
+                              self.view.keepLeftInset,
+                              self.view.keepRightInset,
+                              self.view.keepBottomInset,
+                              nil];
+
+    insets.equal = KeepRequired(0);
+    [self.view setNeedsUpdateConstraints];
+}
+
+@end

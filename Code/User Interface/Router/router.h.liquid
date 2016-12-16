@@ -1,0 +1,15 @@
+{% include 'header' %}
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@protocol {{ prefix }}{{ module_info.name }}ModuleDelegateInterface.h;
+@interface {{ prefix }}{{ module_info.name }}Router : NSObject
+
+- (void)presentInterfaceFromViewController:(UIViewController *)viewController
+                                    inView:(UIView *)view
+                                  delegate:(id <{{ prefix }}{{ module_info.name }}ModuleDelegateInterface>)delegate;
+
+- (void)dismissInterface;
+
+@end
