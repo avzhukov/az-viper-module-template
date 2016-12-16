@@ -8,10 +8,10 @@ license: MIT
 # The declarations for code files
 code_files:
 # Interactor layer
-- {name: "Application\ Logic/Interactor/InteractorInput.h", path: "Code/Application\ Logic/interactor_input.h.liquid"}
-- {name: "Application\ Logic/Interactor/InteractorOutput.h", path: "Code/Application\ Logic/interactor_output.h.liquid"}
-- {name: "Application\ Logic/Interactor/Interactor.h", path: "Code/Application\ Logic/interactor.h.liquid"}
-- {name: "Application\ Logic/Interactor/Interactor.m", path: "Code/Application\ Logic/interactor.m.liquid"}
+- {name: "Application\ Logic/InteractorInput.h", path: "Code/Application\ Logic/interactor_input.h.liquid"}
+- {name: "Application\ Logic/InteractorOutput.h", path: "Code/Application\ Logic/interactor_output.h.liquid"}
+- {name: "Application\ Logic/Interactor.h", path: "Code/Application\ Logic/interactor.h.liquid"}
+- {name: "Application\ Logic/Interactor.m", path: "Code/Application\ Logic/interactor.m.liquid"}
 
 # Module Interface
 - {name: "Module\ Interface/ModuleInterface.h", path: "Code/Module\ Interface/module_interface.h.liquid"}
