@@ -1,0 +1,15 @@
+{% include 'header' %}
+
+#import <Foundation/Foundation.h>
+#import "{{ prefix }}{{ module_info.name }}ModuleInput.h"
+#import "{{ prefix }}{{ module_info.name }}RouterInput.h"
+
+@protocol {{ prefix }}{{ module_info.name }}ModuleOutput;
+
+@interface {{ prefix }}{{ module_info.name }}Assembly : NSObject
+
+- (id<{{ prefix }}{{ module_info.name }}ModuleInput>)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput
+                                             transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock;
+
+
+@end
