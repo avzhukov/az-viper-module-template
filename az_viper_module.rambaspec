@@ -12,10 +12,10 @@ code_files:
 - {name: "Assembly/Assembly.m", path: "Code/Assembly/assembly.m.liquid"}
 
 # Interactor layer
-- {name: "Interactor.h", path: "Code/interactor.h.liquid"}
-- {name: "Interactor.m", path: "Code/interactor.m.liquid"}
-- {name: "InteractorInput.h", path: "Code/interactor_input.h.liquid"}
-- {name: "InteractorOutput.h", path: "Code/interactor_output.h.liquid"}
+- {name: "Interactor/Interactor.h", path: "Code/Interactor/interactor.h.liquid"}
+- {name: "Interactor/Interactor.m", path: "Code/Interactor/interactor.m.liquid"}
+- {name: "Interactor/InteractorInput.h", path: "Code/Interactor/interactor_input.h.liquid"}
+- {name: "Interactor/InteractorOutput.h", path: "Code/Interactor/interactor_output.h.liquid"}
 
 # Router layer
 - {name: "Router/Router.h", path: "Code/Router/router.h.liquid"}
