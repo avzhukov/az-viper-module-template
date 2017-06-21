@@ -51,7 +51,7 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName 
     _view.output = _presenter;
 
     _presenter.router = _router;
-    _router.source = _view;
+    _router.view = _view;
 
     _presenter.interactor = _interactor;
     _interactor.output = _presenter;

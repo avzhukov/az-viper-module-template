@@ -90,16 +90,14 @@
 
     // given
     Class targetClass = [{{ prefix }}{{ module_info.name }}Router class];
-    Class sourceClass = [UIViewController class];
-    Protocol *sourceProtocol = @protocol({{ prefix }}{{ module_info.name }}RouterSource);
+    Class viewClass = [UIViewController class];
 
     // when
     {{ prefix }}{{ module_info.name }}Router *object = _assembly.router;
 
     // then
     XCTAssert([object isKindOfClass:targetClass]);
-    XCTAssert([object.source isKindOfClass:sourceClass]);
-    XCTAssert([object.source conformsToProtocol:sourceProtocol]);
+    XCTAssert([object.view isKindOfClass:viewClass]);
 }
 - (void)testThatAssemblyReturnsRouterInput {
 

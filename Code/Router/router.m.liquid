@@ -1,25 +1,24 @@
 {% include 'header' %}
 
 #import "{{ prefix }}{{ module_info.name }}Router.h"
-#import "{{ prefix }}{{ module_info.name }}RouterSource.h"
 
 @implementation {{ prefix }}{{ module_info.name }}Router
 
 #pragma mark - {{ prefix }}{{ module_info.name }}RouterInput
 - (void)closeModule {
 
-    if (self.source.navigationController) {
-        [self.source.navigationController popViewControllerAnimated:YES];
+    if (self.view.navigationController) {
+        [self.view.navigationController popViewControllerAnimated:YES];
     } else {
-        [self.source dismissViewControllerAnimated:YES completion:nil];
+        [self.view dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
 - (void)openModuleFromWindow:(UIWindow *)window {
-    [window setRootViewController:_source];
+    [window setRootViewController:_view];
 }
 - (void)openModuleFromViewController:(UIViewController *)viewController {
-    [viewController presentViewController:_source animated:YES completion:nil];
+    [viewController presentViewController:_view animated:YES completion:nil];
 }
 
 @end
