@@ -2,10 +2,11 @@
 
 #import <UIKit/UIKit.h>
 #import "{{ prefix }}{{ module_info.name }}ViewInput.h"
+#import "{{ prefix }}{{ module_info.name }}RouterSource.h"
 
-@protocol {{ prefix }}{{ module_info.name }}ViewOutput
+@protocol {{ prefix }}{{ module_info.name }}ViewOutput;
 
-@interface {{ prefix }}{{ module_info.name }}ViewController : UIViewController <{{ prefix }}{{ module_info.name }}ViewInput>
+@interface {{ prefix }}{{ module_info.name }}ViewController : UIViewController <{{ prefix }}{{ module_info.name }}ViewInput, {{ prefix }}{{ module_info.name }}RouterSource>
 
 @property (nonatomic, strong) id<{{ prefix }}{{ module_info.name }}ViewOutput> output;
 

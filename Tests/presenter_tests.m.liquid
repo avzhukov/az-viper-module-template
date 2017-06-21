@@ -58,7 +58,18 @@
     [self.presenter didTriggerViewReadyEvent];
 
     // then
-    XCTAssertTrue(YES);
+    XCTAssertTrue(NO);
+}
+
+- (void)testHandleViewAppearing {
+
+    // given
+
+    // when
+    [self.presenter didTriggerViewWillAppearEvent];
+
+    // then
+    XCTAssertTrue(NO);
 }
 
 #pragma mark - {{ prefix }}{{ module_info.name }}InteractorOutput

@@ -3,8 +3,10 @@
 #import <UIKit/UIKit.h>
 #import "{{ prefix }}{{ module_info.name }}RouterInput.h"
 
+@protocol {{ prefix }}{{ module_info.name }}RouterSource;
+
 @interface {{ prefix }}{{ module_info.name }}Router : NSObject<{{ prefix }}{{ module_info.name }}RouterInput>
 
-@property (weak, nonatomic) UIViewController *view;
+@property (weak, nonatomic) UIViewController<{{ prefix }}{{ module_info.name }}RouterSource> *source;
 
 @end

@@ -7,18 +7,18 @@
 #pragma mark - {{ prefix }}{{ module_info.name }}RouterInput
 - (void)closeModule {
 
-    if (self.view.navigationController) {
-        [self.view.navigationController popViewControllerAnimated:YES];
+    if (self.source.navigationController) {
+        [self.source.navigationController popViewControllerAnimated:YES];
     } else {
-        [self.view dismissViewControllerAnimated:YES completion:nil];
+        [self.source dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
 - (void)openModuleFromWindow:(UIWindow *)window {
-    [window setRootViewController:_view];
+    [window setRootViewController:_source];
 }
 - (void)openModuleFromViewController:(UIViewController *)viewController {
-    [viewController presentViewController:_view animated:YES completion:nil];
+    [viewController presentViewController:_source animated:YES completion:nil];
 }
 
 @end

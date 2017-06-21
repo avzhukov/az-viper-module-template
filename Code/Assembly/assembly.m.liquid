@@ -24,8 +24,7 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboard = @"
 @implementation {{ prefix }}{{ module_info.name }}Assembly
 
 #pragma mark - Public
-- (id<{{ prefix }}{{ module_info.name }}ModuleInput>)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput
-                                             transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock {
+- (id<{{ prefix }}{{ module_info.name }}ModuleInput>)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock {
 
     [self buildComponents];
     [self configureDependenciesWithModuleOutput:moduleOutput];
@@ -41,10 +40,10 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboard = @"
 #pragma mark - Dependencies
 - (void)buildComponents {
 
-    _view = [self view{{ prefix }}{{ module_info.name }}];
-    _presenter = [self presenter{{ prefix }}{{ module_info.name }}];
-    _router = [self router{{ prefix }}{{ module_info.name }}];
-    _interactor = [self interactor{{ prefix }}{{ module_info.name }}];
+    _view = [self view{{ module_info.name }}];
+    _presenter = [self presenter{{ module_info.name }}];
+    _router = [self router{{ module_info.name }}];
+    _interactor = [self interactor{{ module_info.name }}];
 }
 - (void)configureDependenciesWithModuleOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput {
 
@@ -52,7 +51,7 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboard = @"
     _view.output = _presenter;
 
     _presenter.router = _router;
-    _router.view = _view;
+    _router.source = _view;
 
     _presenter.interactor = _interactor;
     _interactor.output = _presenter;
@@ -61,7 +60,7 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboard = @"
 }
 
 #pragma mark - Factory methods
-- ({{ prefix }}{{ module_info.name }}ViewController *)view{{ prefix }}{{ module_info.name }} {
+- ({{ prefix }}{{ module_info.name }}ViewController *)view{{ module_info.name }} {
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:{{ prefix }}{{ module_info.name }}ViewControllerStoryboard
                                                          bundle:[NSBundle mainBundle]];
@@ -70,13 +69,13 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboard = @"
 
     return vc;
 }
-- ({{ prefix }}{{ module_info.name }}Presenter *)presenter{{ prefix }}{{ module_info.name }} {
+- ({{ prefix }}{{ module_info.name }}Presenter *)presenter{{ module_info.name }} {
     return [[{{ prefix }}{{ module_info.name }}Presenter alloc] init];
 }
-- ({{ prefix }}{{ module_info.name }}Router *)router{{ prefix }}{{ module_info.name }} {
+- ({{ prefix }}{{ module_info.name }}Router *)router{{ module_info.name }} {
     return [[{{ prefix }}{{ module_info.name }}Router alloc] init];
 }
-- ({{ prefix }}{{ module_info.name }}Interactor *)interactor{{ prefix }}{{ module_info.name }} {
+- ({{ prefix }}{{ module_info.name }}Interactor *)interactor{{ module_info.name }} {
     return [[{{ prefix }}{{ module_info.name }}Interactor alloc] init];
 }
 
