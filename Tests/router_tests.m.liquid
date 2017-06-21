@@ -8,7 +8,7 @@
 @interface {{ prefix }}{{ module_info.name }}RouterTests : XCTestCase
 
 @property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Router *router;
-@property (nonatomic, strong) UIViewController *viewMock;
+@property (nonatomic, strong) UIViewController *sourceMock;
 
 @end
 
@@ -18,15 +18,15 @@
     [super setUp];
 
     _router = [{{ prefix }}{{ module_info.name }}Router new];
-    _viewMock = OCMClassMock([UIViewController class]);
-    _router.view = _viewMock;
+    _sourceMock = OCMClassMock([UIViewController class]);
+    _router.source = _sourceMock;
 }
 
 - (void)tearDown {
 
     _router = nil;
-    [(id)_viewMock stopMocking];
-    _viewMock = nil;
+    [(id)_sourceMock stopMocking];
+    _sourceMock = nil;
 
     [super tearDown];
 }
@@ -36,7 +36,7 @@
 
     // given
     UINavigationController *mockNavController = OCMClassMock([UINavigationController class]);
-    [OCMStub([_viewMock navigationController]) andReturn:mockNavController];
+    [OCMStub([_sourceMock navigationController]) andReturn:mockNavController];
 
     // when
     [_router closeModule];
@@ -53,7 +53,7 @@
     [_router closeModule];
 
     // then
-    OCMVerify([_viewMock dismissViewControllerAnimated:YES completion:nil]);
+    OCMVerify([_sourceMock dismissViewControllerAnimated:YES completion:nil]);
 }
 
 - (void)testOpenModuleFromWindow {
@@ -65,7 +65,7 @@
     [_router openModuleFromWindow:mockWindow];
 
     // then
-    OCMVerify([mockWindow setRootViewController:_viewMock]);
+    OCMVerify([mockWindow setRootViewController:_sourceMock]);
     [(id)mockWindow stopMocking];
     mockWindow = nil;
 }
@@ -79,7 +79,7 @@
     [_router openModuleFromViewController:mockViewController];
 
     // then
-    OCMVerify([mockViewController presentViewController:_viewMock animated:YES completion:nil]);
+    OCMVerify([mockViewController presentViewController:_sourceMock animated:YES completion:nil]);
     [(id)mockViewController stopMocking];
     mockViewController = nil;
 }

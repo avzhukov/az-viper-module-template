@@ -9,7 +9,7 @@
 #import "{{ prefix }}{{ module_info.name }}Interactor.h"
 
 static NSString *{{ prefix }}{{ module_info.name }}ViewControllerIdentifier = @"{{ prefix }}{{ module_info.name }}ViewController";
-static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboard = @"{{ prefix }}{{ module_info.name }}";
+static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName = <#(nonnull NSString *)#>;
 
 
 @interface {{ prefix }}{{ module_info.name }}Assembly ()
@@ -62,7 +62,7 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboard = @"
 #pragma mark - Factory methods
 - ({{ prefix }}{{ module_info.name }}ViewController *)view{{ module_info.name }} {
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:{{ prefix }}{{ module_info.name }}ViewControllerStoryboard
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName
                                                          bundle:[NSBundle mainBundle]];
 
     {{ prefix }}{{ module_info.name }}ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:{{ prefix }}{{ module_info.name }}ViewControllerIdentifier];
