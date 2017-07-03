@@ -34,13 +34,9 @@
 }
 
 - (void)tearDown {
-
     self.presenter = nil;
-    [(id)self.interactorMock stopMocking];
     self.interactorMock = nil;
-    [(id)self.viewMock stopMocking];
     self.viewMock = nil;
-    [(id)self.routerMock stopMocking];
     self.routerMock = nil;
 
     [super tearDown];

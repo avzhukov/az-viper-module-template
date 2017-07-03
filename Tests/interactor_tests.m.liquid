@@ -24,9 +24,7 @@
 }
 
 - (void)tearDown {
-
     _interactor = nil;
-    [(id)_outputMock stopMocking];
     _outputMock = nil;
 
     [super tearDown];
