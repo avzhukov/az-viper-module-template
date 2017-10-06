@@ -9,4 +9,6 @@
 
 @property (nonatomic, strong) id<{{ prefix }}{{ module_info.name }}ViewOutput> output;
 
+- (void)setupViewReadyBlock:(void(^)(void))block;
+
 @end

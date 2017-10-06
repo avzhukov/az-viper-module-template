@@ -29,11 +29,20 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName 
     [self buildComponents];
     [self configureDependenciesWithModuleOutput:moduleOutput];
 
+    [_view setupViewReadyBlock:^{
+        [self addChildComponents];
+    }];
+
     if (transitionBlock) {
         transitionBlock(_router);
     }
 
     return _presenter;
+}
+
+#pragma mark - Child components
+- (void)addChildComponents {
+    // Present child submodules here
 }
 
 #pragma mark - Private

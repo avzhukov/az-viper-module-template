@@ -6,8 +6,11 @@
 
 #pragma mark - {{ prefix }}{{ module_info.name }}RouterInput
 - (void)closeModule {
-
-    if (self.view.navigationController) {
+    if (self.view.parentViewController) {
+        [self.view willMoveToParentViewController:nil];
+        [self.view.view removeFromSuperview];
+        [self.view removeFromParentViewController];
+    } else if (self.view.navigationController) {
         [self.view.navigationController popViewControllerAnimated:YES];
     } else {
         [self.view dismissViewControllerAnimated:YES completion:nil];
