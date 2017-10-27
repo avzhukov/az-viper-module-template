@@ -25,7 +25,6 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName 
 
 #pragma mark - Public
 - (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion {
-
     [self buildComponents];
     [self configureDependenciesWithModuleOutput:moduleOutput];
 
@@ -50,14 +49,12 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName 
 #pragma mark - Private
 #pragma mark - Dependencies
 - (void)buildComponents {
-
     _view = [self view{{ module_info.name }}];
     _presenter = [self presenter{{ module_info.name }}];
     _router = [self router{{ module_info.name }}];
     _interactor = [self interactor{{ module_info.name }}];
 }
 - (void)configureDependenciesWithModuleOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput {
-
     _presenter.view = _view;
     _view.output = _presenter;
 

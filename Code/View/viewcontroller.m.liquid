@@ -21,10 +21,10 @@
   [super viewDidLoad];
   UIView *view = self.view; // force to load the view to initialize the IBOutlets
   if (view && _viewReadyBlock) {
-    _viewReadyBlock();
-    _viewReadyBlock = nil;
+      _viewReadyBlock();
+      _viewReadyBlock = nil;
   }
-  
+
   [self.output didTriggerViewReadyEvent];
 }
 - (void)viewWillAppear:(BOOL)animated {
