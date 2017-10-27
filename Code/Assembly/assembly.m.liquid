@@ -24,20 +24,22 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName 
 @implementation {{ prefix }}{{ module_info.name }}Assembly
 
 #pragma mark - Public
-- (id<{{ prefix }}{{ module_info.name }}ModuleInput>)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock {
+- (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion {
 
     [self buildComponents];
     [self configureDependenciesWithModuleOutput:moduleOutput];
 
     [_view setupViewReadyBlock:^{
         [self addChildComponents];
+
+        if (completion) {
+            completion(_presenter);
+        }
     }];
 
     if (transitionBlock) {
         transitionBlock(_router);
     }
-
-    return _presenter;
 }
 
 #pragma mark - Child components
