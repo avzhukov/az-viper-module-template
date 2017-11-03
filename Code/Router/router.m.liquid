@@ -21,7 +21,11 @@
     [window setRootViewController:_view];
 }
 - (void)openModuleFromViewController:(UIViewController *)viewController {
-    [viewController presentViewController:_view animated:YES completion:nil];
+    if (viewController.navigationController) {
+        [viewController.navigationController pushViewController:_view animated:YES];
+    } else {
+        [viewController presentViewController:_view animated:YES completion:nil];
+    }
 }
 
 @end
