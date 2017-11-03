@@ -30,7 +30,9 @@
 
     _moduleOutputMock = OCMProtocolMock(@protocol({{ prefix }}{{ module_info.name }}ModuleOutput));
     _assembly = [[{{ prefix }}{{ module_info.name }}Assembly alloc] init];
-    [_assembly assembleModuleWithOutput:_moduleOutputMock transitionBlock:nil];
+    [_assembly assembleModuleWithOutput:_moduleOutputMock
+                    transitionBlock:nil
+                         completion:nil];
 }
 
 - (void)tearDown {
@@ -108,21 +110,10 @@
     __block id result;
     [_assembly assembleModuleWithOutput:_moduleOutputMock transitionBlock:^(id<{{ prefix }}{{ module_info.name }}RouterInput> router) {
         result = router;
-    }];
+    } completion:nil];
 
     // then
     XCTAssert([result conformsToProtocol:routerInputProtocol]);
-}
-- (void)testThatAssemblyReturnsModuleInput {
-
-    // given
-    Protocol *moduleInputProtocol = @protocol({{ prefix }}{{ module_info.name }}ModuleInput);
-
-    // when
-    id result = [_assembly assembleModuleWithOutput:_moduleOutputMock transitionBlock:nil];
-
-    // then
-    XCTAssert([result conformsToProtocol:moduleInputProtocol]);
 }
 
 @end
