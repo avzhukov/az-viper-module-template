@@ -25,66 +25,62 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName 
 
 #pragma mark - Public
 - (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion {
-    [self buildComponents];
-    [self configureDependenciesWithModuleOutput:moduleOutput];
+  [self buildComponents];
+  [self configureDependenciesWithModuleOutput:moduleOutput];
 
-    [_view setupViewReadyBlock:^{
-        [self addChildComponents];
+  [_view setupViewReadyBlock:^{
+    [self addChildComponents];
+      if (completion) {
+        completion(_presenter);
+      }
+  }];
 
-        if (completion) {
-            completion(_presenter);
-        }
-    }];
-
-    if (transitionBlock) {
-        transitionBlock(_router);
-    }
+  if (transitionBlock) {
+    transitionBlock(_router);
+  }
 }
 
 #pragma mark - Child components
 - (void)addChildComponents {
-    // Present child submodules here
+  // Present child submodules here
 }
 
 #pragma mark - Private
 #pragma mark - Dependencies
 - (void)buildComponents {
-    _view = [self view{{ module_info.name }}];
-    _presenter = [self presenter{{ module_info.name }}];
-    _router = [self router{{ module_info.name }}];
-    _interactor = [self interactor{{ module_info.name }}];
+  _view = [self view{{ module_info.name }}];
+  _presenter = [self presenter{{ module_info.name }}];
+  _router = [self router{{ module_info.name }}];
+  _interactor = [self interactor{{ module_info.name }}];
 }
 - (void)configureDependenciesWithModuleOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput {
-    _presenter.view = _view;
-    _view.output = _presenter;
+  _presenter.view = _view;
+  _view.output = _presenter;
 
-    _presenter.router = _router;
-    _router.view = _view;
+  _presenter.router = _router;
+  _router.view = _view;
 
-    _presenter.interactor = _interactor;
-    _interactor.output = _presenter;
+  _presenter.interactor = _interactor;
+  _interactor.output = _presenter;
 
-    _presenter.moduleOutput = moduleOutput;
+  _presenter.moduleOutput = moduleOutput;
 }
 
 #pragma mark - Factory methods
 - ({{ prefix }}{{ module_info.name }}ViewController *)view{{ module_info.name }} {
-
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName
+  UIStoryboard *storyboard = [UIStoryboard storyboardWithName:{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName
                                                          bundle:[NSBundle mainBundle]];
-
-    {{ prefix }}{{ module_info.name }}ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:{{ prefix }}{{ module_info.name }}ViewControllerIdentifier];
-
-    return vc;
+  {{ prefix }}{{ module_info.name }}ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:{{ prefix }}{{ module_info.name }}ViewControllerIdentifier];
+  return vc;
 }
 - ({{ prefix }}{{ module_info.name }}Presenter *)presenter{{ module_info.name }} {
-    return [[{{ prefix }}{{ module_info.name }}Presenter alloc] init];
+  return [[{{ prefix }}{{ module_info.name }}Presenter alloc] init];
 }
 - ({{ prefix }}{{ module_info.name }}Router *)router{{ module_info.name }} {
-    return [[{{ prefix }}{{ module_info.name }}Router alloc] init];
+  return [[{{ prefix }}{{ module_info.name }}Router alloc] init];
 }
 - ({{ prefix }}{{ module_info.name }}Interactor *)interactor{{ module_info.name }} {
-    return [[{{ prefix }}{{ module_info.name }}Interactor alloc] init];
+  return [[{{ prefix }}{{ module_info.name }}Interactor alloc] init];
 }
 
 @end

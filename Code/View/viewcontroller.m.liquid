@@ -13,30 +13,27 @@
 @implementation {{ prefix }}{{ module_info.name }}ViewController
 
 - (void)setupViewReadyBlock:(void(^)(void))block {
-    _viewReadyBlock = block;
+  _viewReadyBlock = block;
 }
 
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    UIView *view = self.view;
-    if (view && _viewReadyBlock) {
-        _viewReadyBlock();
-        _viewReadyBlock = nil;
-    }
+  [super viewDidLoad];
+  UIView *view = self.view;
+  if (view && _viewReadyBlock) {
+    _viewReadyBlock();
+    _viewReadyBlock = nil;
+  }
 
-    [self.output didTriggerViewReadyEvent];
+  [self.output didTriggerViewReadyEvent];
 }
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.output didTriggerViewWillAppearEvent];
+  [super viewWillAppear:animated];
+  [self.output didTriggerViewWillAppearEvent];
 }
-
 
 #pragma mark - {{ prefix }}{{ module_info.name }}ViewInput
 
-
 #pragma mark - Private
-
 
 @end
