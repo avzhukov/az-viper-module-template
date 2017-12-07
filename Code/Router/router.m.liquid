@@ -6,7 +6,7 @@
 
 #pragma mark - {{ prefix }}{{ module_info.name }}RouterInput
 - (void)closeModule {
-  if (self.view.parentViewController) {
+  if (self.view.parentViewController && ![self.view.parentViewController isKindOfClass:[UINavigationController class]]) {
     [self.view willMoveToParentViewController:nil];
     [self.view.view removeFromSuperview];
     [self.view removeFromParentViewController];
