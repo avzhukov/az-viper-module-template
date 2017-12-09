@@ -1,12 +1,7 @@
 {% include 'header' %}
 
-#import <UIKit/UIKit.h>
+#import "BaseRouter.h"
 
-@protocol {{ prefix }}{{ module_info.name }}RouterInput <NSObject>
-
-- (void)openModuleFromWindow:(UIWindow *)window;
-- (void)openModuleFromViewController:(UIViewController *)viewController;
-
-- (void)closeModule;
+@protocol {{ prefix }}{{ module_info.name }}RouterInput <BaseRouterInput>
 
 @end
