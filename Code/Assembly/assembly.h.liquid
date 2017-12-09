@@ -8,6 +8,6 @@
 
 @interface {{ prefix }}{{ module_info.name }}Assembly : NSObject
 
-- (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion;
++ (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion;
 
 @end

@@ -14,4 +14,6 @@
 @property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Router *router;
 @property (strong, nonatomic) {{ prefix }}{{ module_info.name }}Interactor *interactor;
 
+- (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion;
+
 @end
