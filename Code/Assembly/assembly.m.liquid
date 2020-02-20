@@ -24,12 +24,12 @@ static NSString *{{ prefix }}{{ module_info.name }}ViewControllerStoryboardName 
 @implementation {{ prefix }}{{ module_info.name }}Assembly
 
 #pragma mark - Public
-+ (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion {
++ (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(BaseRouter<{{ prefix }}{{ module_info.name }}RouterInput> *router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion {
   [[{{ prefix }}{{ module_info.name }}Assembly new] assembleModuleWithOutput:moduleOutput transitionBlock:transitionBlock completion:completion];
 }
 
 #pragma mark private instance method analog
-- (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(id<{{ prefix }}{{ module_info.name }}RouterInput> router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion {
+- (void)assembleModuleWithOutput:(id <{{ prefix }}{{ module_info.name }}ModuleOutput>)moduleOutput transitionBlock:(void(^)(BaseRouter<{{ prefix }}{{ module_info.name }}RouterInput> *router))transitionBlock completion:(void(^)(id<{{ prefix }}{{ module_info.name }}ModuleInput> input))completion {
   [self buildComponents];
   [self configureDependenciesWithModuleOutput:moduleOutput];
 
